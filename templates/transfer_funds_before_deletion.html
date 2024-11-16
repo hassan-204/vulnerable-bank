@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Funds Before Deletion</title>
+</head>
+<body>
+    <h1>Transfer Funds to Another Account Before Deleting {{ user.username }}'s Account</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="recipient_username">Recipient Username</label>
+        <input type="text" name="recipient_username" required>
+        <button type="submit">Transfer and Delete</button>
+    </form>
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

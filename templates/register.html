@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <title>ACM Bank</title>
+
+    {% include 'nav.html' %}
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    
+
+ <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <!-- Left Side with Image -->
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img">
+                        <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Shanghai_skyscrapers_5166285.jpg/800px-Shanghai_skyscrapers_5166285.jpg" alt="Register Image">
+                    </div>
+                </div>
+                <!-- Right Side with Form -->
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="mb-4">Create Your Account</h1>
+                    <p class="mb-4">Join the ACM Student Chapter at UoBD and become part of a thriving tech community. Register now to access exclusive resources, events, and opportunities.</p>
+                    <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4 me-3">Register</button>
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary rounded-pill px-4">Already have an account?</a>
+                    </form>
+
+                    <div class="d-flex align-items-center mt-4">
+                        <a class="btn btn-outline-primary btn-square me-3" href="https://www.instagram.com/acm_uobd/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square me-3" href="https://www.linkedin.com/company/uobd-acm-chapter/?originalSubdomain=ae" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-primary btn-square" href="mailto:acm@uobd.ac.ae"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% include 'footer.html' %}
+
+   
+</body>
+</html>

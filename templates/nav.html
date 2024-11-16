@@ -1,0 +1,105 @@
+<head>
+    <meta charset="utf-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    {% load static %}
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+{% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if request.path == '/transfer/' or request.path == '/market/' or request.path == '/login/' or request.path == '/register/' or request.path == '/cheque/' %}
+
+<style>
+    .text-color{
+        color: #1363c6 !important;
+    }
+</style>
+
+{% else %}
+<style>
+    .text-color{
+        color: #FFFFFF !important;
+    }
+</style>
+{% endif %}
+
+<!-- Navbar Start -->
+<div class="container-fluid sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark p-0">
+            <a href="/" class="navbar-brand">
+                <h1 class="text-color">ACM Bank</h1>
+            </a>
+
+            <!-- Navbar Toggler for mobile view -->
+            <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar items -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <!-- Link to Transfer Funds -->
+                    <li class="nav-item">
+                        <a class="fs-4 nav-link text-color" href="/transfer/">Transfer Funds</a>
+                    </li>
+                    <!-- Link to Market -->
+                    <li class="nav-item">
+                        <a class="fs-4 nav-link text-color" href="/market/">Market</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Profile Dropdown -->
+            {% if user.is_authenticated %}
+            <div class="dropdown d-flex align-items-center">
+                <a class="nav-link dropdown-toggle d-flex align-items-center text-color" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- Font Awesome Icon for Profile -->
+                    <i class="fas fa-user fa-lg text-color"></i>
+                    <span class="ms-2 text-color">{{ user.username }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>
+            {% endif %}
+        </nav>
+    </div>
+</div>
+
+
+<!-- Navbar End -->
