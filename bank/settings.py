@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'bank'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://bank.hassanaljuboori.com',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
