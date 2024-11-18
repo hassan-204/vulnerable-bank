@@ -24,7 +24,7 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                 <div class="about-img">
-                    <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Shanghai_skyscrapers_5166285.jpg/800px-Shanghai_skyscrapers_5166285.jpg" alt="Deposit E-Cheque">
+                    <img class="img-fluid" src="https://assets.newatlas.com/dims4/default/d8d4867/2147483647/strip/true/crop/4500x3000+0+0/resize/2880x1920!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Ftallest-skyscrapers-demolished-10.jpg" alt="Deposit E-Cheque">
                 </div>
             </div>
 
@@ -46,6 +46,17 @@
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="cheque_code" class="form-label">Cheque Code</label>
+
+<!--                         DEV NOTE: FOR TESTING PURPOSES ONLY. REMOVE AFTER DEPLOYMENT TO PRODUCTION!
+                        4817529314628734
+                        3621784591064382
+                        7104839256319074
+                        1543286947526081
+                        9203475182641379
+                        8475362901487923
+                        6021398452768410 -->
+
+
                         <input type="text" class="form-control" id="cheque_code" name="cheque_code" placeholder="Enter 16-digit code" required maxlength="16" minlength="16">
                     </div>
                     <button type="submit" class="btn btn-primary rounded-pill px-4 me-3">Deposit</button>

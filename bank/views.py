@@ -212,7 +212,7 @@ def admin_login(request):
         password = request.POST.get('password')
 
         # Here you would check if the password is correct (You can check with a predefined password for example)
-        if password == "adminpassword":  # Change to your desired password check logic
+        if password == "admin":  # Change to your desired password check logic
             request.session['password_verified'] = True
             return redirect('secret_question')  # Redirect to secret question page
         else:
@@ -272,8 +272,8 @@ def transfer_funds_before_deletion(request, user_id):
         return redirect('admin_dashboard')  # Redirect to admin dashboard if trying to delete an admin's account
     
     # Check if the admin has reached the maximum allowed deletions (3)
-    if request.session.get('deletion_count', 0) >= 3:
-        messages.error(request, "You have reached the maximum number of deletions allowed (3).")
+    if request.session.get('deletion_count', 0) >= 2:
+        messages.error(request, "You have reached the maximum number of deletions allowed (2).")
         return redirect('admin_dashboard')  # Redirect to admin dashboard if the limit is reached
 
     if request.method == 'POST':
@@ -308,4 +308,29 @@ def transfer_funds_before_deletion(request, user_id):
             return redirect('transfer_funds_before_deletion', user_id=user_to_delete.id)
     
     return render(request, 'transfer_funds_before_deletion.html', {'user': user_to_delete})
+
+
+
+def dashboard(request):
+    user = request.user
+    if not user.is_authenticated:
+        return redirect('login')  # Redirect to login if not authenticated
+
+    # Get user's balance and transactions
+    balance = user.profile.balance  # Assuming balance is stored in the user's profile
+    sent_transactions = Transaction.objects.filter(sender=user)
+    received_transactions = Transaction.objects.filter(recipient=user)
+
+    # Combine sent and received transactions into one list
+    all_transactions = sent_transactions | received_transactions
+
+    context = {
+        "user": user,
+        "balance": balance,
+        "all_transactions": all_transactions,  # Pass the combined list
+    }
+    
+    return render(request, "dashboard.html", context)
+
+
 

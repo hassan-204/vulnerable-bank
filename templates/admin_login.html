@@ -6,6 +6,29 @@
     <title>Admin Login</title>
 </head>
 <body>
+
+<style>
+.alerts-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Ensure it stays above other content */
+    width: 100%;
+    max-width: 90%; /* Responsive handling for smaller screens */
+
+}
+
+.alert {
+    z-index: 9999;
+    margin-bottom: 10px; /* Add space between stacked alerts */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional for a subtle shadow effect */
+    background-color: white;
+}
+</style>
+
+
+
+
     <h1>Enter the Admin Password</h1>
     <form method="POST">
         {% csrf_token %}

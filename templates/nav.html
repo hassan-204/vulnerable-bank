@@ -7,7 +7,7 @@
     
     {% load static %}
     <!-- Favicon -->
-    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+    <link rel="icon" href="{% static 'img/dark.png' %}" type="image/png">
     
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,17 +29,38 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 
+<style>
+.alerts-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Ensure it stays above other content */
+    width: 100%;
+    max-width: 90%; /* Responsive handling for smaller screens */
+
+}
+
+.alert {
+    z-index: 9999;
+    margin-bottom: 10px; /* Add space between stacked alerts */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional for a subtle shadow effect */
+    background-color: white;
+}
+</style>
+
 {% if messages %}
-    <div>
+    <div class="alerts-container">
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
                 {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
     </div>
 {% endif %}
 
-{% if request.path == '/transfer/' or request.path == '/market/' or request.path == '/login/' or request.path == '/register/' or request.path == '/cheque/' %}
+
+{% if request.path == '/transfer/' or request.path == '/market/' or request.path == '/login/' or request.path == '/register/' or request.path == '/cheque/' or request.path == '/dashboard/' %}
 
 <style>
     .text-color{
@@ -76,6 +97,11 @@
                     <li class="nav-item">
                         <a class="fs-4 nav-link text-color" href="/transfer/">Transfer Funds</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="fs-4 nav-link text-color" href="/cheque/">Deposit Cheque</a>
+                    </li>
+
                     <!-- Link to Market -->
                     <li class="nav-item">
                         <a class="fs-4 nav-link text-color" href="/market/">Market</a>
@@ -92,8 +118,11 @@
                     <i class="fas fa-user fa-lg text-color"></i>
                     <span class="ms-2 text-color">{{ user.username }}</span>
                 </a>
+               
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+
                 </ul>
             </div>
             {% endif %}

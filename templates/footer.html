@@ -1,20 +1,52 @@
  {% load static%}
  <!-- Footer Start -->
- <div class="container-fluid bg-dark text-white-50 footer pt-5">
+<div class="container-fluid bg-dark text-white-50 footer pt-5">
     <div class="container py-5">
         <div class="row g-5">
-            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                <a href="index.html" class="d-inline-block mb-3">
-                        <img class="logo" src="{% static 'img/dual.png' %}" alt="Logo">
-                </a>
-               
+            <!-- Logo and About -->
+     <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
+    <a href="" class="d-inline-block mb-3">
+        <img class="logo" src="{% static 'img/light.png' %}" alt="ACM Bank Logo" width="100">
+    </a>
+    <p class="text-white-50">ACM Bank is committed to delivering innovative and secure banking solutions tailored to meet your needs. Join thousands of satisfied customers today!</p>
+</div>
+
+            
+            <!-- Quick Links -->
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                <h5 class="text-light mb-4">Quick Links</h5>
+                <a class="btn btn-link text-white-50" href="#">About Us</a>
+                <a class="btn btn-link text-white-50" href="#">Our Services</a>
+                <a class="btn btn-link text-white-50" href="#">FAQs</a>
+                <a class="btn btn-link text-white-50" href="#">Contact Us</a>
+                <a class="btn btn-link text-white-50" href="#">Privacy Policy</a>
             </div>
             
+            <!-- Contact Information -->
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                <h5 class="text-light mb-4">Contact Us</h5>
+                <p><i class="fa fa-map-marker-alt me-3"></i>123 ACM Bank St., Dubai, UAE</p>
+                <p><i class="fa fa-phone-alt me-3"></i>+971 555 570 282</p>
+                <p><i class="fa fa-envelope me-3"></i>support@acmbank.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-light text-primary rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-light text-primary rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-light text-primary rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-square btn-light text-primary rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
             
-            
+            <!-- Newsletter -->
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                <h5 class="text-light mb-4">Newsletter</h5>
+                <p>Stay updated with the latest news and offers from ACM Bank.</p>
+                <div class="position-relative">
+                    <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Your Email">
+                    <button type="button" class="btn btn-primary py-2 px-4 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
+                </div>
+            </div>
         </div>
     </div>
-    
 </div>
 <!-- Footer End -->
 
